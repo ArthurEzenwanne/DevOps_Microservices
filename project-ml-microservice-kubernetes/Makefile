@@ -10,10 +10,13 @@ setup:
 	# source ~/.devops/bin/activate
 	python3 -m venv ~/.devops
 
-install:
+install-pip :
 	# This should be run from inside a virtualenv
-	pip install --upgrade pip &&\
-		pip install -r requirements.txt
+	pip install --upgrade pip
+
+install-requirements:
+	# This should be run from inside a virtualenv
+	pip install -r requirements.txt
 
 test:
 	# Additional, optional, tests could go here
@@ -28,4 +31,4 @@ lint:
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203,W1202 app.py
 
-all: install lint test
+all: install-pip install-requirements lint test
