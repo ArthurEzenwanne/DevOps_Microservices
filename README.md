@@ -46,11 +46,17 @@ source ~/.devops/bin/activate
 
 * Setup and Configure Docker locally
 1. Update the installed packages and package cache on your instance.
-    ```sudo yum update -y```
+    ```
+    sudo yum update -y
+    ```
 2. Install the most recent Docker Community Edition package.
-    ```sudo amazon-linux-extras install docker```
+    ```
+    sudo amazon-linux-extras install docker
+    ```
 3. Add the <current_user> to the docker group so that you can run Docker commands without using `sudo`.
-    ```sudo usermod -a -G docker <current_user>```
+    ```
+    sudo usermod -a -G docker <current_user>
+    ```
 4. Close the current SSH terminal window and reconnect to your instance in a new one. Your new SSH session should have the appropriate docker group permissions. Start the Docker service.
     ```sudo service docker start```
 5. Verify that the <current_user> can run Docker commands without using `sudo`
