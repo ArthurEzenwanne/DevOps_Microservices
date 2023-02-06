@@ -40,21 +40,21 @@ source ~/.devops/bin/activate
 3. Run in Kubernetes:  `./run_kubernetes.sh`
 
 ### Making Predictions
-* While `app.py` is running, `./make_predictions` to make an inference.
+* While `app.py` is running, run `./make_predictions` to make an inference.
 
 ### Configuration Steps
 
 * Setup and Configure Docker locally
 1. Update the installed packages and package cache on your instance.
-    `sudo yum update -y`
+    ```sudo yum update -y```
 2. Install the most recent Docker Community Edition package.
-    `sudo amazon-linux-extras install docker`
+    ```sudo amazon-linux-extras install docker```
 3. Add the <current_user> to the docker group so that you can run Docker commands without using `sudo`.
-    `sudo usermod -a -G docker <current_user>`
+    ```sudo usermod -a -G docker <current_user>```
 4. Close the current SSH terminal window and reconnect to your instance in a new one. Your new SSH session should have the appropriate docker group permissions. Start the Docker service.
-    `sudo service docker start`
+    ```sudo service docker start```
 5. Verify that the <current_user> can run Docker commands without using `sudo`
-    `docker ps`
+    ```docker ps```
 
 * Setup and Configure Kubernetes locally
 1. To install the latest minikube stable release on x86-64 Linux using binary download.
@@ -63,24 +63,24 @@ source ~/.devops/bin/activate
     sudo install minikube-linux-amd64 /usr/local/bin/minikube
     ```
 2. Start the K8 cluster.
-    `minikube start`
+    ```minikube start```
 3. Verify the installation by checking the K8 running version.
-    `minikube version`
+    ```minikube version```
  
 ### Run Application Steps
 
 * Run the Docker app and Make Predictions
 1. Run and build a docker image. (You may give your docker build a unique name in the shell script file `run_docker.sh`)
-    `./run_docker.sh`
+    ```./run_docker.sh```
 2. Make Predictions (in a new console tab).
-    `./make_prediction.sh`
+    ```./make_prediction.sh```
 3. Upload the docker image to an online repository. (Ensure you put in your personal login details in the shell script file `upload_docker.sh`)
-    `./upload_docker.sh`
+    ```./upload_docker.sh```
 
 * Deploy the Flask Application with Kubernetes
 1. Ensure that minicube is up and running.
-   `minikube version`
+   ```minikube version```
 2. To deploy the application on the Kubernetes cluster involves running your containerized application using `kubectl`. The commands to set a docker image path, start up minikube kubectl on port 80, and forward the container port to a host are contained in the `run_kubernetes.sh` file. We now run the shell script.
-   `./run_kubernetes.sh`
+   ```./run_kubernetes.sh```
 3. Make Predictions (in a new console tab).
-    `./make_prediction.sh`
+    ```./make_prediction.sh```
